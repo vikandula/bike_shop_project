@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Bike Shop</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/bikes">Browse Bikes</a>
+        <a href="/cart">Cart</a>
+    </nav>
+</header>
+
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+
+<footer>
+    <p>Bike Shop Demo Website</p>
+</footer>
+</body>
+</html>
