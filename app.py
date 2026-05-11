@@ -1,40 +1,31 @@
-
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
+
 bikes = [
-    {"id": 1, "name": "SpeedX 200", "price": 1200, "image": "bike1.jpg"},
-    {"id": 2, "name": "Mountain Beast", "price": 1800, "image": "bike2.jpg"},
-    {"id": 3, "name": "Urban Rider", "price": 950, "image": "bike3.jpg"},
+    {
+        "name": "Mountain Bike X1",
+        "price": 1200,
+        "image": "https://images.unsplash.com/photo-1511994298241-608e28f14fde"
+    },
+    {
+        "name": "Road Bike Pro",
+        "price": 1800,
+        "image": "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8"
+    },
+    {
+        "name": "Electric Bike E5",
+        "price": 2500,
+        "image": "https://images.unsplash.com/photo-1541625602330-2277a4c46182"
+    }
 ]
 
-cart = []
 
 @app.route('/')
 def home():
-    return render_template('home.html', bikes=bikes)
+    return render_template('index.html', bikes=bikes)
 
-@app.route('/bikes')
-def browse():
-    return render_template('bikes.html', bikes=bikes)
-
-@app.route('/add_to_cart/<int:bike_id>')
-def add_to_cart(bike_id):
-    bike = next((b for b in bikes if b["id"] == bike_id), None)
-    if bike:
-        cart.append(bike)
-        return redirect(url_for('view_cart'))
-    return redirect(url_for('error_page'))
-
-@app.route('/cart')
-def view_cart():
-    total = sum(item['price'] for item in cart)
-    return render_template('cart.html', cart=cart, total=total)
-
-@app.route('/error')
-def error_page():
-    return render_template('error.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5050)
