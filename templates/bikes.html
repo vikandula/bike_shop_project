@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Browse Bikes</h2>
+
+<div class="bike-grid">
+{% for bike in bikes %}
+<div class="card">
+    <img src="{{ url_for('static', filename='images/' + bike.image) }}">
+    <h3>{{ bike.name }}</h3>
+    <p>${{ bike.price }}</p>
+    <a href="/add_to_cart/{{ bike.id }}" class="btn">Add to Cart</a>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

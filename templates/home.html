@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero">
+    <h2>Ride Your Dream Bike</h2>
+    <p>Explore premium bikes for every adventure.</p>
+    <a href="/bikes" class="btn">Browse Bikes</a>
+</div>
+
+<div class="bike-grid">
+{% for bike in bikes %}
+<div class="card">
+    <img src="{{ url_for('static', filename='images/' + bike.image) }}">
+    <h3>{{ bike.name }}</h3>
+    <p>${{ bike.price }}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
